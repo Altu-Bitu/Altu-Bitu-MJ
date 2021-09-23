@@ -16,8 +16,8 @@ stack <int> melody[7];
 
 int main(void)
 {
+	// 입력 시간을 줄여주는 코드
     ios_base::sync_with_stdio(0);
-    //c와 c++ 입출력의 synchronization을 0(false)로 바꿔준다.
     cin.tie(0);
 
     int N, P;

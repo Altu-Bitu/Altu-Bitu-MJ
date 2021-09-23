@@ -1,4 +1,4 @@
-/*
+/* 
  * [백준] 2841번 외계인의 기타 연주
  * stack의 top 값: 결국 입력된 프렛 넘버 중 가장 큰 값
  * 1. stack의 top값 < 현재 프렛: 현재 프렛 push (손가락 누르기 +1)
@@ -7,13 +7,13 @@
  * 그리고 현재 프렛 push (손가락 누르기 +1)
  * 예를 들어 5와 7을 누르고 있을 때 프렛 2를 눌렀다면 5도 7도 모두 빼줘야 함.
  * 3. stack의 top = 현재 프렛: 카운트 필요 x. 그냥 pass -> 코드 짤 필요 x
- */
+ */ 
 #include <iostream>
-#include <stack>
+#include <stack> 
 
 using namespace std;
 stack <int> melody[7];
-
+ 
 int main(void)
 {
 	// 입력 시간을 줄여주는 코드
@@ -48,7 +48,7 @@ int main(void)
                  * n번째 멜로디가 비어있고 top값 < p인 경우 => p값 push
                  * n번째 멜로디가 비어있지 않지만 top값 < p인 경우 => p값 push
                 */
-                melody[n].push(p);
+                melody[n].push(p);  
                 count++;
             }
         }

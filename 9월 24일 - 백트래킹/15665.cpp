@@ -1,50 +1,46 @@
-//
-// Created by user on 2021-09-30.
-//
-/*
- * [백준] 15665번 - N과 M (11)
- * 입력: N: 주어지는 자연수의 개수, M: 수열의 길이 (N개의 자연수 중 M개를 고른 수열)
- * - 범위: 1 <= M <= N <= 7
- * 조건 1. 수열은 사전 순으로 증가하는 순서로 출력
- * 조건 2. 길이가 M인 수열
- * 조건 3. 같은 숫자는 되나 같은 수열은 불가능 (예: 8 8 가능, 1 8, 1 8 불가능)
- */
-#define SIZE = 10001;
 #include <iostream>
 #include <algorithm>
-#include <vector>
 
 using namespace std;
-int N, M;
-int input[8]; // 입력할 수 있는 자연수(N)의 최대값은 7
-vector<int> result; // 결과 저장 및 출력할 벡터
-vector<bool> check; // 중복 방지를 위한 벡터
 
-// pos: 위치, cnt: 길이
-void backTracking(int pos, int cnt)
-{
-    if(cnt == M)
-    {
+const int SIZE = 7; //배열 크기
 
+int n, m;// n: 주어지는 자연수의 개수, m: 수열의 길이
+int num[SIZE], ans[SIZE]; // num: 자연수 입력받을 배열, ans: 정답 저장할 배열
+
+void backtracking(int cnt) {
+    if (cnt == m) { //길이 m이라면 (기저조건)
+        for (int i = 0; i < m; i++) // 배열의 길이가 m인 정답 출력
+            cout << ans[i] << ' '; // 공백으로 구분해서 정답 출력
+        cout << '\n'; // 한 줄에 정답 하나씩
+        return; // 종료
     }
-    for (int i = 0; i <= result.size(); i++)
-    {
-        input[pos] = i;
-        backTracking(pos + 1, cnt + 1);
+    int value = -1; //이전에 선택한 값
+    for (int i = 0; i < n; i++) { // 입력한 자연수만큼 돌면서
+        if (value != num[i]) { //이전에 탐색한 값이 아니라면(=해당 수 사용 가능하다면)
+            value = num[i]; // value 값 지금 입력한 값으로 바꿔주고 (다음 숫자에서는 이전에 선택한 값이 되니까)
+            ans[cnt] = num[i]; // 이전에 탐색 안했으므로 ans배열의 cnt 번째에 해당 값 넣어주고
+            backtracking(cnt + 1); // 매개변수 cnt+1로 바꾸고 재귀함수 호출
+        }
     }
-
 }
 
-int main(void)
-{
-    cin >> N >> M;
-    for (int i = 0; i < N; i++)
-    {
-        cin >> input[i];
+/**
+ * [백트래킹 풀이] (184ms)
+ * 해설 : https://myunji.tistory.com/309
+ */
+int main() {
+    //입력
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) // n개 만큼의 자연수를
+        cin >> num[i]; // num 배열에 입력
 
-    }
-    sort(result.begin(), result.end()); // 조건 1을 만족하기 위해 입력받은 수들 오름차순 정렬
-    // backTracking();
+    //연산
+    sort(num, num + n); // 수열을 사전 순으로 증가하는 순서로 출력해야 하기 때문에 sort 해준다.
 
-    return 0;
-}
+    //연산 + 출력
+    backtracking(0); // 0입력하면 재귀함수 돌면서 backtracking(m) 됐을 때 최종 답 출력.
+}//
+// Created by user on 2021-10-03.
+//
+

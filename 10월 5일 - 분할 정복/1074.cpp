@@ -19,6 +19,7 @@ void getCount(int row, int col, int size) {    // row, col 시작 좌표, size: 
     }*/
     if (size == 1)
         return;
+    // box: 한 변의 길이가 size인 정사각형 4등분 한 만큼의 크기. (계산한 걸로 칠 때 사용)
     int box = size * size / 4;
     // 구간별
     // 왼쪽 상단 (A)

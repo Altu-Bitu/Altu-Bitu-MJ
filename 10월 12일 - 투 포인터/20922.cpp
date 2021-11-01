@@ -23,17 +23,13 @@ int two_pointer(int n, int k, vector<int> num){
         if(count[num[end]] < k) { // 수열 끝에 있는 정수가 나온 수가 k보다 작다면
             count[num[end]]++; // 정수가 나온 횟수 증가하고
             end++; // 수열 길이 증가
-            ans = max(end - start, ans);
+            ans = max(end - start, ans); // 반복문 돌면서 최대값 갱신
 
         }
         else { // 정수가 나온 수가 k 이상이라면 (부분 수열 종료 조건)
             count[num[start]]--; // 포함 안 시킬거니까 나온 횟수 감소
             start++; // 수열 시작 위치 변경
         }
-
-       // ans = max(end - start + 1, ans);
-        // 반복문 돌면서 최대값 갱신
-
     }
     return ans;
 }

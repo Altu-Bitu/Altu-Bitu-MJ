@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <vector>
 
-using namespace std;
+using namespace std; 
 int N, K; // 정수의 개수 N, 같은 정수가 있을 수 있는 최대 개수 K
 // int ans = 0; //  ans: 최종 답
 

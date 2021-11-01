@@ -18,7 +18,7 @@ int bfs() {
     int time = 0;
     visited[N] = 1;
     while(!q.empty()) {
-        int N = q.front();
+        int N = q.front(); // 반복문 돌면서 수빈이의 위치 갱신
         q.pop();
         time = visited[N]; // 걸린 시간은 수빈이의 위치의 값
         if (N == K) // 동생과 같은 위치에 도착했다면

@@ -16,7 +16,7 @@ int bfs() {
     q.push(N);
     // int index = N;
     int time = 0;
-    visited[N] = 1;
+    visited[N] = 1; // 시작 위치에는 당연히 방문 했으니까 1로 초기화
     while(!q.empty()) {
         int N = q.front(); // 반복문 돌면서 수빈이의 위치 갱신
         q.pop();
